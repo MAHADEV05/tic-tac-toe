@@ -26,7 +26,6 @@ function App() {
   };
 
   const winnerChecker = () => {
-    // Rows
     let flag=false;
     for (let i = 0; i < 3; i++) {
       if (matrix[i][0] !== "" && matrix[i][0] === matrix[i][1] && matrix[i][1] === matrix[i][2]) {
@@ -34,16 +33,12 @@ function App() {
         flag=true;
       }
     }
-
-    // Columns
     for (let i = 0; i < 3; i++) {
       if (matrix[0][i] !== "" && matrix[0][i] === matrix[1][i] && matrix[1][i] === matrix[2][i]) {
         setWinner(`${matrix[0][i]} is the winner`);
         flag=true;
       }
     }
-
-    // Diagonals
     if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
       setWinner(`${matrix[0][0]} is the winner`);
       flag=true;
@@ -62,7 +57,7 @@ function App() {
   };
 
   const handler = (r, c) => {
-    if (matrix[r][c] !== "" || winner) return; // Prevent overriding and playing after a win
+    if (matrix[r][c] !== "" || winner) return; 
 
     const tempMatrix = [...matrix];
     tempMatrix[r][c] = char;
@@ -94,13 +89,7 @@ function App() {
         </div>
         <button
           onClick={() => {
-            setMatrix([
-              ["", "", ""],
-              ["", "", ""],
-              ["", "", ""],
-            ]);
-            setWinner("");
-            setChar("X");
+            reset();
           }}
         >
           RESET
